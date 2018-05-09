@@ -3,9 +3,36 @@ require 'pry'
 class Translator
 
   def initialize
+    @upcase_dictionary = {"A" => ".-",
+                          "B" => "-...",
+                          "C" => "-.-.",
+                          "D" => "-..",
+                          "E" => ".",
+                          "F" => "..-.",
+                          "G" => "--.",
+                          "H" => "....",
+                          "I" => "..",
+                          "J" => ".---",
+                          "K" => "-.-",
+                          "L" => ".-..",
+                          "M" => "--",
+                          "N" => "-.",
+                          "O" => "---",
+                          "P" => ".--.",
+                          "Q" => "--.-",
+                          "R" => ".-.",
+                          "S" => "...",
+                          "T" => "-",
+                          "U" => "..-",
+                          "V" => "...-",
+                          "W" => ".--",
+                          "X" => "-..-",
+                          "Y" => "-.--",
+                          "Z" => "--.."}
+
     @dictionary = {"a" => ".-",
-                    "b" => "-...",
-                    "c" => "-.-.",
+                   "b" => "-...",
+                   "c" => "-.-.",
                     "d" => "-..",
                     "e" => ".",
                     "f" => "..-.",
@@ -54,4 +81,21 @@ class Translator
     end
     english_words.join(" ")
   end
+
+  def eng_to_morse_upcase(english_words)
+    english_words = english_words.split(" ")
+
+    english_words.each do |word|
+      word.split("").each do |letter|
+        a = @dictionary[letter].to_s
+        if letter.capitalize
+          b = @upcase_dictionary[letter].to_s
+          a = a + b
+        end
+        word.gsub! letter, a
+      end
+    end
+    english_words.join(" ")
+  end
+
 end
