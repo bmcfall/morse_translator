@@ -1,3 +1,5 @@
+require 'pry'
+
 class Translator
 
   def initialize
@@ -38,5 +40,14 @@ class Translator
                     "9" => "----.",
                     "0" => "-----",
                     " " => " "}
+  end
+
+  def eng_to_morse(english_words)
+    english_words = english_words.split(" ")
+
+    english_words.each do |word|
+      word.downcase
+      
+    end
   end
 end
