@@ -47,7 +47,11 @@ class Translator
 
     english_words.each do |word|
       word.downcase
-      
+      word.split("").each do |letter|
+        a = @dictionary[letter].to_s
+        word.gsub! letter, a
+      end
     end
+    english_words.join(" ")
   end
 end

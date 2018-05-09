@@ -16,4 +16,10 @@ class TranslatorTest < Minitest::Test
 
     assert_equal "......-...-..--- .-----.-..-..-..", translator.eng_to_morse("hello world")
   end
+
+  def test_translation_from_eng_to_morse_case_sensitive
+    translator = Translator.new
+
+    assert_equal "......-...-..--- .-----.-..-..-..", translator.eng_to_morse("Hello World")
+  end
 end
